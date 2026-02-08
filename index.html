@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Careers — Peetslist Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #001E61;
@@ -41,7 +44,7 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 16px 32px;
   }
-  .logo { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: 0.5px; text-decoration: none; }
+  .logo { font-size: 22px; font-weight: 700; color: rgba(0, 0, 0, 0.8); letter-spacing: normal; text-decoration: none; font-family: Inter, 'Inter Placeholder', sans-serif; }
   .nav-links { display: flex; gap: 28px; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--navy); }
@@ -107,13 +110,12 @@
     display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
     gap: 40px 56px; max-width: 900px; margin: 0 auto;
   }
-  .logo-grid img {
-    height: 36px; width: auto; max-width: 160px;
-    object-fit: contain;
-    filter: grayscale(100%) opacity(0.4);
-    transition: filter 0.3s;
+  .logo-grid .company-logo {
+    height: 36px; display: flex; align-items: center;
+    opacity: 0.35; transition: opacity 0.3s;
   }
-  .logo-grid img:hover { filter: grayscale(100%) opacity(0.65); }
+  .logo-grid .company-logo:hover { opacity: 0.6; }
+  .logo-grid .company-logo svg { height: 100%; width: auto; }
 
   /* ── Sections ── */
   section { padding: 88px 32px; }
@@ -294,7 +296,7 @@
     background: var(--dark-navy); color: rgba(255,255,255,0.7);
     padding: 48px 32px; text-align: center;
   }
-  footer .footer-logo { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+  footer .footer-logo { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 12px; font-family: Inter, 'Inter Placeholder', sans-serif; }
   footer p { font-size: 13px; line-height: 1.7; }
   footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
   footer a:hover { color: var(--white); }
@@ -313,7 +315,7 @@
 <!-- ── Navigation ── -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo">PEETSLIST</a>
+    <a href="https://peetslist.me" class="logo">Peetslist</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#why-join">Why Join</a></li>
@@ -337,13 +339,13 @@
 <div class="logo-bar">
   <div class="section-tag">Our team comes from</div>
   <div class="logo-grid">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/JPMorgan_logo.svg" alt="JPMorgan">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/PwC_Company_Logo.svg" alt="PwC">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" alt="Accenture">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Toyota.svg" alt="Toyota">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Goldman_Sachs.svg" alt="Goldman Sachs">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/JNJ_Logo_New.svg" alt="Johnson &amp; Johnson">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/MUFG_logo.svg" alt="MUFG">
+    <div class="company-logo"><svg viewBox="0 0 180 36" xmlns="http://www.w3.org/2000/svg"><text x="0" y="26" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#333">JPMorgan</text></svg></div>
+    <div class="company-logo"><svg viewBox="0 0 80 36" xmlns="http://www.w3.org/2000/svg"><text x="0" y="26" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#333">PwC</text></svg></div>
+    <div class="company-logo"><svg viewBox="0 0 180 36" xmlns="http://www.w3.org/2000/svg"><text x="0" y="26" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#333">Accenture</text></svg></div>
+    <div class="company-logo"><svg viewBox="0 0 130 36" xmlns="http://www.w3.org/2000/svg"><text x="0" y="26" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#333">TOYOTA</text></svg></div>
+    <div class="company-logo"><svg viewBox="0 0 250 36" xmlns="http://www.w3.org/2000/svg"><text x="0" y="26" font-family="Georgia, serif" font-size="20" font-weight="400" fill="#333">Goldman Sachs</text></svg></div>
+    <div class="company-logo"><svg viewBox="0 0 250 36" xmlns="http://www.w3.org/2000/svg"><text x="0" y="26" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#333">Johnson &amp; Johnson</text></svg></div>
+    <div class="company-logo"><svg viewBox="0 0 110 36" xmlns="http://www.w3.org/2000/svg"><text x="0" y="26" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#333">MUFG</text></svg></div>
   </div>
 </div>
 
@@ -715,9 +717,8 @@
 
 <!-- ── Footer ── -->
 <footer>
-  <div class="footer-logo">PEETSLIST</div>
-  <p>Strategy teams for enterprises that move fast.</p>
-  <p style="margin-top:16px;">
+  <div class="footer-logo">Peetslist</div>
+  <p style="margin-top:8px;">
     <a href="mailto:hello@peetslist.me">hello@peetslist.me</a>
   </p>
 </footer>
