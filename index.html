@@ -1,763 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Careers — Peetslist Strategy</title>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4DNRZCFVG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-L4DNRZCFVG');
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #001E61;
-    --dark-navy: #001440;
-    --accent: #1A2B53;
-    --muted-blue: #7F8EB0;
-    --light-gray: #D1D0D2;
-    --beige: #EBE8E5;
-    --warm-gray: #D7D2CB;
-    --white: #FFFFFF;
-    --text: #1a1a1a;
-    --text-light: #555;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  /* Yellow text selection highlight */
-  ::selection { background: #ffd400; color: #000; }
-  ::-moz-selection { background: #ffd400; color: #000; }
-
-  body {
-    font-family: Arial, 'Helvetica Neue', sans-serif;
-    color: var(--text);
-    line-height: 1.6;
-    background: var(--white);
-  }
-
-  /* ── Nav ── */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(255,255,255,0.97);
-    border-bottom: 1px solid var(--light-gray);
-    backdrop-filter: blur(8px);
-  }
-  .nav-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 32px;
-  }
-  .logo { font-size: 22px; font-weight: 700; color: rgba(0, 0, 0, 0.8); letter-spacing: normal; text-decoration: none; font-family: Inter, 'Inter Placeholder', sans-serif; }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--navy); }
-  .nav-cta {
-    background: var(--navy); color: var(--white); padding: 10px 24px;
-    border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--dark-navy); }
-
-  /* ── Hero ── */
-  .hero {
-    padding: 160px 32px 100px;
-    background: linear-gradient(160deg, var(--dark-navy) 0%, var(--navy) 50%, var(--accent) 100%);
-    color: var(--white);
-    text-align: center;
-  }
-  .hero-tag {
-    display: inline-block; background: rgba(255,255,255,0.12);
-    padding: 6px 16px; border-radius: 20px; font-size: 13px;
-    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 28px;
-  }
-  .hero h1 {
-    font-size: clamp(32px, 5vw, 52px); font-weight: 700;
-    line-height: 1.2; max-width: 700px; margin: 0 auto 20px;
-  }
-  .rotating-text {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    vertical-align: bottom;
-    height: 1.2em;
-  }
-  .rotating-text span {
-    display: block;
-    animation: rotateWords 8s ease-in-out infinite;
-  }
-  @keyframes rotateWords {
-    0%, 15%   { transform: translateY(0); }
-    25%, 40%  { transform: translateY(-1.2em); }
-    50%, 65%  { transform: translateY(-2.4em); }
-    75%, 90%  { transform: translateY(-3.6em); }
-    100%      { transform: translateY(-4.8em); }
-  }
-  .hero p {
-    font-size: clamp(16px, 2vw, 19px); max-width: 600px;
-    margin: 0 auto 36px; opacity: 0.88; line-height: 1.7;
-  }
-  .hero-cta {
-    display: inline-block; background: var(--white); color: var(--navy);
-    padding: 14px 36px; border-radius: 6px; font-weight: 700; font-size: 15px;
-    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-
-  /* ── Logo Bar ── */
-  .logo-bar {
-    background: var(--white);
-    padding: 48px 32px 40px;
-    border-bottom: 1px solid var(--light-gray);
-  }
-  .logo-bar .section-tag { text-align: center; margin-bottom: 28px; }
-  .logo-grid {
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-    gap: 40px 56px; max-width: 900px; margin: 0 auto;
-  }
-  .logo-grid img {
-    height: 36px; width: auto; max-width: 160px;
-    object-fit: contain;
-    filter: grayscale(100%) opacity(0.4);
-    transition: filter 0.3s;
-  }
-  .logo-grid img:hover { filter: grayscale(100%) opacity(0.65); }
-
-  /* ── Sections ── */
-  section { padding: 88px 32px; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  .section-tag {
-    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--muted-blue); font-weight: 600; margin-bottom: 12px;
-  }
-  .section-title { font-size: 32px; font-weight: 700; color: var(--navy); margin-bottom: 16px; line-height: 1.3; }
-  .section-sub { font-size: 17px; color: var(--text-light); max-width: 640px; margin-bottom: 48px; line-height: 1.7; }
-
-  /* ── About ── */
-  .about { background: var(--white); }
-  .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-  .about-card {
-    padding: 36px; border-radius: 12px; border: 1px solid var(--light-gray);
-    transition: box-shadow 0.3s;
-  }
-  .about-card:hover { box-shadow: 0 4px 20px rgba(0,30,97,0.08); }
-  .about-card h3 { font-size: 18px; color: var(--navy); margin-bottom: 12px; }
-  .about-card p { font-size: 15px; color: var(--text-light); line-height: 1.7; }
-  .about-icon { font-size: 28px; margin-bottom: 16px; display: block; }
-
-  /* ── Why Join ── */
-  .why-join { background: var(--beige); }
-  .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
-  .value-item {
-    background: var(--white); padding: 32px; border-radius: 12px;
-    border-left: 4px solid var(--navy);
-  }
-  .value-item h3 { font-size: 17px; color: var(--navy); margin-bottom: 10px; }
-  .value-item p { font-size: 14px; color: var(--text-light); line-height: 1.7; }
-
-  /* ── Case Studies ── */
-  .case-studies { background: var(--white); }
-  .cs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
-  .cs-card {
-    border: 1px solid var(--light-gray); border-radius: 12px; overflow: hidden;
-    transition: box-shadow 0.3s, transform 0.3s;
-  }
-  .cs-card:hover { box-shadow: 0 8px 28px rgba(0,30,97,0.1); transform: translateY(-3px); }
-  .cs-header {
-    background: var(--navy); color: var(--white); padding: 24px 28px;
-  }
-  .cs-header h3 { font-size: 18px; margin-bottom: 4px; }
-  .cs-header .cs-role { font-size: 13px; opacity: 0.8; }
-  .cs-body { padding: 24px 28px; }
-  .cs-meta { font-size: 13px; color: var(--muted-blue); margin-bottom: 12px; }
-  .cs-body p { font-size: 14px; color: var(--text-light); line-height: 1.7; margin-bottom: 14px; }
-  .cs-outcome {
-    display: inline-block; background: #e8f5e9; color: #2e7d32;
-    padding: 4px 12px; border-radius: 4px; font-size: 13px; font-weight: 600;
-  }
-  .cs-pending {
-    display: inline-block; background: var(--beige); color: var(--accent);
-    padding: 4px 12px; border-radius: 4px; font-size: 13px; font-weight: 600;
-  }
-  .cs-tags {
-    margin-top: 14px; font-size: 12px; color: var(--muted-blue);
-    letter-spacing: 0.3px; line-height: 1.8;
-  }
-
-  /* ── Model Case Timeline ── */
-  .model-case { background: var(--beige); }
-  .timeline { max-width: 780px; margin: 0 auto; position: relative; }
-  .tl-row {
-    display: grid; grid-template-columns: 140px 24px 1fr; gap: 0 20px;
-    padding: 28px 0; position: relative;
-  }
-  .tl-row + .tl-row { border-top: 1px solid var(--light-gray); }
-  .tl-row.highlight { background: rgba(0,30,97,0.03); border-radius: 12px; padding: 28px 16px; margin: -1px -16px 0; border-top: none; }
-  .tl-row.graduation { padding-bottom: 0; }
-  .tl-period { text-align: right; padding-top: 2px; }
-  .tl-label { font-size: 14px; font-weight: 700; color: var(--navy); }
-  .tl-months { font-size: 12px; color: var(--muted-blue); margin-top: 2px; }
-  .tl-dot {
-    width: 14px; height: 14px; border-radius: 50%;
-    background: var(--muted-blue); border: 3px solid var(--white);
-    box-shadow: 0 0 0 2px var(--muted-blue);
-    margin-top: 5px; justify-self: center;
-    position: relative; z-index: 1;
-  }
-  .tl-dot.active { background: var(--navy); box-shadow: 0 0 0 2px var(--navy); }
-  .tl-dot.promoted { background: #2e7d32; box-shadow: 0 0 0 2px #2e7d32; width: 18px; height: 18px; margin-top: 3px; }
-  .tl-dot.grad { background: var(--navy); box-shadow: 0 0 0 3px var(--navy); width: 20px; height: 20px; margin-top: 2px; }
-  .tl-content {}
-  .tl-hours {
-    font-size: 26px; font-weight: 700; color: var(--navy); line-height: 1;
-  }
-  .tl-hours span { font-size: 14px; font-weight: 400; color: var(--muted-blue); }
-  .tl-badge {
-    display: inline-block; padding: 3px 10px; border-radius: 4px;
-    font-size: 12px; font-weight: 600; margin: 8px 0 6px;
-  }
-  .tl-badge.junior { background: #e3f2fd; color: #1565c0; }
-  .tl-badge.senior { background: #e8f5e9; color: #2e7d32; }
-  .tl-project { font-size: 15px; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
-  .tl-content p { font-size: 14px; color: var(--text-light); line-height: 1.65; margin-bottom: 8px; }
-  .tl-skills { font-size: 12px; color: var(--muted-blue); font-style: italic; }
-  .tl-grad-text {
-    background: var(--white); border: 2px solid var(--navy); border-radius: 10px;
-    padding: 20px 24px; font-size: 14px; color: var(--text); line-height: 1.7;
-  }
-  .tl-grad-text strong { color: var(--navy); }
-
-  @media (max-width: 600px) {
-    .tl-row { grid-template-columns: 1fr; gap: 8px 0; }
-    .tl-period { text-align: left; display: flex; gap: 12px; align-items: baseline; }
-    .tl-dot { display: none; }
-    .tl-hours { font-size: 22px; }
-  }
-
-  /* ── How It Works ── */
-  .how-it-works { background: var(--white); }
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; counter-reset: step; }
-  .step { text-align: center; }
-  .step::before {
-    counter-increment: step;
-    content: counter(step);
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 48px; height: 48px; border-radius: 50%;
-    background: var(--navy); color: var(--white);
-    font-size: 20px; font-weight: 700; margin-bottom: 16px;
-  }
-  .step h3 { font-size: 16px; color: var(--navy); margin-bottom: 8px; }
-  .step p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
-
-  /* ── Registration Form ── */
-  .register { background: var(--white); }
-  .form-container {
-    max-width: 680px; margin: 0 auto;
-    background: var(--white); border: 1px solid var(--light-gray);
-    border-radius: 16px; padding: 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  }
-  .form-container h2 { font-size: 24px; color: var(--navy); margin-bottom: 8px; }
-  .form-container .form-sub { font-size: 15px; color: var(--text-light); margin-bottom: 32px; line-height: 1.6; }
-  .form-row { margin-bottom: 20px; }
-  .form-row.half { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-row label {
-    display: block; font-size: 13px; font-weight: 600;
-    color: var(--accent); margin-bottom: 6px; letter-spacing: 0.3px;
-  }
-  .form-row input, .form-row select, .form-row textarea {
-    width: 100%; padding: 12px 14px; border: 1px solid var(--light-gray);
-    border-radius: 8px; font-size: 15px; font-family: inherit;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background: var(--white);
-  }
-  .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
-    outline: none; border-color: var(--navy);
-    box-shadow: 0 0 0 3px rgba(0,30,97,0.1);
-  }
-  .form-row textarea { resize: vertical; min-height: 100px; }
-  .form-row .hint { font-size: 12px; color: var(--muted-blue); margin-top: 4px; }
-  .checkbox-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px; }
-  .checkbox-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--navy); }
-  .checkbox-row label { font-size: 13px; color: var(--text-light); font-weight: 400; line-height: 1.5; }
-  .submit-btn {
-    width: 100%; padding: 14px; background: var(--navy); color: var(--white);
-    border: none; border-radius: 8px; font-size: 16px; font-weight: 700;
-    cursor: pointer; transition: background 0.2s, transform 0.1s;
-    letter-spacing: 0.3px;
-  }
-  .submit-btn:hover { background: var(--dark-navy); }
-  .submit-btn:active { transform: scale(0.99); }
-  .form-note { text-align: center; font-size: 12px; color: var(--muted-blue); margin-top: 16px; line-height: 1.5; }
-
-  /* Success state */
-  .form-success {
-    display: none; text-align: center; padding: 48px 24px;
-  }
-  .form-success .check { font-size: 48px; margin-bottom: 16px; }
-  .form-success h3 { font-size: 22px; color: var(--navy); margin-bottom: 12px; }
-  .form-success p { font-size: 15px; color: var(--text-light); line-height: 1.7; }
-
-  /* ── Footer ── */
-  footer {
-    background: var(--dark-navy); color: rgba(255,255,255,0.7);
-    padding: 48px 32px; text-align: center;
-  }
-  footer .footer-logo { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 12px; font-family: Inter, 'Inter Placeholder', sans-serif; }
-  footer p { font-size: 13px; line-height: 1.7; }
-  footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
-  footer a:hover { color: var(--white); }
-
-  /* ── Responsive ── */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .form-row.half { grid-template-columns: 1fr; }
-    .form-container { padding: 32px 24px; }
-    section { padding: 64px 20px; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers — Peetslist</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L4DNRZCFVG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L4DNRZCFVG');
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="careers.css">
 </head>
 <body>
 
-<!-- ── Navigation ── -->
-<nav>
-  <div class="nav-inner">
+  <!-- Header (matches index.html) -->
+  <header class="header">
     <a href="https://peetslist.me" class="logo">Peetslist</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#why-join">Why Join</a></li>
-      <li><a href="#case-studies">Case Studies</a></li>
-      <li><a href="#model-case">Model Case</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
-    </ul>
-    <a href="#register" class="nav-cta">Apply for the Internship</a>
-  </div>
-</nav>
+    <nav class="header-nav">
+      <a href="#register" class="btn-talk">Join the talent pool</a>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
 
-<!-- ── Hero ── -->
-<section class="hero">
-  <div class="hero-tag">MBA &amp; Master's Consulting Associate Program</div>
-  <h1>Real clients. Real strategy.<br>Your path to <span class="rotating-text"><span>Peetslist.<br>MBB.<br>Impact.<br>PE/VC.<br>Peetslist.</span></span></h1>
-  <p>Join a global team working on live strategy projects for Fortune Global 500 enterprises to create real client impact. Build your consulting toolkit through real engagements, backed by a methodology shaped by ex-McKinsey and IDEO professionals.</p>
-  <a href="#register" class="hero-cta">Apply for the Internship</a>
-</section>
+  <!-- Hero -->
+  <section class="careers-hero">
+    <h1>Real clients. Real strategy.<br><em>Your path to MBB.</em></h1>
+    <p>Join a global team working on live strategy projects for Japan's largest enterprises. Build your consulting toolkit through real engagements, backed by a methodology shaped by ex-McKinsey and IDEO professionals.</p>
+    <a href="#register" class="btn-primary">Apply to the Talent Pool</a>
+  </section>
 
-<!-- ── Logo Bar ── -->
-<div class="logo-bar">
-  <div class="section-tag">Our team comes from</div>
-  <div class="logo-grid">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/JPMorgan_logo.svg" alt="JPMorgan">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/PwC_Company_Logo.svg" alt="PwC">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" alt="Accenture">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Toyota.svg" alt="Toyota">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Goldman_Sachs.svg" alt="Goldman Sachs">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/JNJ_Logo_New.svg" alt="Johnson &amp; Johnson">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/MUFG_logo.svg" alt="MUFG">
-  </div>
-</div>
-
-<!-- ── About ── -->
-<section class="about" id="about">
-  <div class="container">
-    <div class="section-tag">What We Do</div>
-    <div class="section-title">Strategy teams for enterprises that move fast</div>
-    <div class="section-sub">We run the exploratory work your team can't resource &mdash; from market entry research to startup sourcing &mdash; powered by top MBA and Master's talent worldwide.</div>
-    <div class="about-grid">
-      <div class="about-card">
-        <span class="about-icon">&#127760;</span>
+  <!-- Services Strip -->
+  <section class="services-strip">
+    <div class="services-strip-inner">
+      <div class="service-block">
         <h3>Market Entry</h3>
-        <p>Market research, competitive analysis, and go-to-market strategies for enterprises expanding into new regions and segments across Asia, Europe, and the Americas.</p>
+        <p>Market research, competitive analysis, and go-to-market strategies for enterprises expanding into new regions.</p>
       </div>
-      <div class="about-card">
-        <span class="about-icon">&#128640;</span>
+      <div class="service-block">
         <h3>New Product Launch</h3>
-        <p>Hypothesis validation, customer discovery, and business case development for new products and services &mdash; from concept to pilot.</p>
+        <p>Hypothesis validation, customer discovery, and business case development from concept to pilot.</p>
       </div>
-      <div class="about-card">
-        <span class="about-icon">&#129302;</span>
+      <div class="service-block">
         <h3>Venture Sourcing</h3>
-        <p>Startup scouting, technology assessment, and partnership evaluation for corporate innovation teams seeking external growth engines.</p>
+        <p>Startup scouting, technology assessment, and partnership evaluation for corporate innovation teams.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── Why Join ── -->
-<section class="why-join" id="why-join">
-  <div class="container">
-    <div class="section-tag">For MBA &amp; Master's Candidates</div>
-    <div class="section-title">Why join Peetslist?</div>
-    <div class="section-sub">We're not just another internship. Peetslist is a practicum for aspiring strategy consultants &mdash; MBA and Master's students alike &mdash; with real clients, real deliverables, and a track record of MBB placements.</div>
-    <div class="value-grid">
-      <div class="value-item">
+  <!-- Why Join -->
+  <section class="why-section">
+    <h2 class="section-heading">– Why join us –</h2>
+    <div class="why-grid">
+      <div class="why-card">
         <h3>Live Client Projects</h3>
-        <p>Work on actual engagements with Fortune Global 500 enterprises. Hypothesis-driven consulting on real business problems.</p>
+        <p>Work on actual engagements with Fortune 500-level Japanese manufacturers and industrial conglomerates. Hypothesis-driven consulting on real business problems.</p>
       </div>
-      <div class="value-item">
+      <div class="why-card">
         <h3>MBB-Track Record</h3>
-        <p>Our alumni have received offers from Strategy&amp;, McKinsey, and Bain. Build the exact skills recruiters look for: hypothesis building, client communication, and deliverable crafting.</p>
+        <p>Our alumni have received offers from Strategy&, McKinsey, and Bain. Build the exact skills recruiters look for: hypothesis building, client communication, and deliverable crafting.</p>
       </div>
-      <div class="value-item">
+      <div class="why-card">
         <h3>Structured Training</h3>
         <p>4-domain, 3-level skill map covering research, analysis, communication, and project management. Systematic OJT with weekly feedback loops.</p>
       </div>
-      <div class="value-item">
+      <div class="why-card">
         <h3>World-Class Mentor Network</h3>
-        <p>Our advisory board includes professionals from McKinsey, IDEO, and VC/PE backgrounds. Their insights shape our methodology and project reviews &mdash; elevating the quality of every engagement you work on.</p>
+        <p>Our advisory board includes professionals from McKinsey, IDEO, and VC/PE backgrounds. Their insights shape our methodology and project reviews.</p>
       </div>
-      <div class="value-item">
-        <h3>Flexible &amp; Remote</h3>
-        <p>Up to 20 hours/week, fully remote from anywhere in the world. Designed to fit around your MBA coursework &mdash; not compete with it.</p>
+      <div class="why-card">
+        <h3>Flexible & Remote</h3>
+        <p>Up to 20 hours/week, fully remote from anywhere in the world. Designed to fit around your MBA coursework — not compete with it.</p>
       </div>
-      <div class="value-item">
+      <div class="why-card">
         <h3>Paid Experience</h3>
         <p>Competitive compensation from day one. While the real value is career acceleration, you're fairly compensated for every hour you contribute.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── Case Studies ── -->
-<section class="case-studies" id="case-studies">
-  <div class="container">
-    <div class="section-tag">Member Stories</div>
-    <div class="section-title">Careers built at Peetslist</div>
-    <div class="section-sub">Some members grow into full-time leadership roles. Others choose new paths &mdash; in consulting, venture capital, or development finance. Either way, the experience stays with them.</div>
-    <div class="cs-grid">
+  <!-- Member Stories -->
+  <section class="member-stories">
+    <div class="member-stories-inner">
+      <h2 class="section-heading">– Member stories –</h2>
+      <div class="member-grid">
 
-      <div class="cs-card">
-        <div class="cs-header">
-          <h3>Senior Associate</h3>
-          <div class="cs-role">Global Banking</div>
-        </div>
-        <div class="cs-body">
-          <p><strong>What she wanted:</strong> A way to test the waters in consulting &mdash; moving beyond financial products to find and solve the most impactful problems for real clients.</p>
-          <p><strong>What she got:</strong> Conducted primary research, built business cases from scratch, and identified high-impact client problems alongside team members across multiple enterprise engagements. Went from executing tasks to proactively shaping proposals.</p>
-          <p>"I went from executing tasks to proactively shaping proposals. The monthly feedback loop transformed how I work."</p>
-          <div class="cs-tags">#manufacturing #newproductdev #pricingstrategy #venturesourcing</div>
-        </div>
+        <article class="member-card">
+          <div class="member-card-top">
+            <div class="member-name">Takenari Tsuru</div>
+            <div class="member-role">Senior Associate, CPA</div>
+            <div class="member-path">Waseda → Accenture → PwC Japan → PwC India (3 yrs)</div>
+          </div>
+          <p class="member-desc">Led cross-border financial and tax strategy across multiple enterprise projects. Managed associate teams and drove PoC design for major manufacturing clients.</p>
+          <span class="member-outcome placed">→ Strategy&, McKinsey, Bain</span>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card-top">
+            <div class="member-name">Miku Katori</div>
+            <div class="member-role">Senior Associate</div>
+            <div class="member-path">Keio → MUFG → JP Morgan</div>
+          </div>
+          <p class="member-desc">Transitioned from banking to consulting. Owns financial projections and investment scenario analysis across multiple enterprise engagements.</p>
+          <span class="member-outcome active">Currently active</span>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card-top">
+            <div class="member-name">Miki Maekawa</div>
+            <div class="member-role">Associate</div>
+            <div class="member-path">J&J Innovation → LSE Master's</div>
+          </div>
+          <p class="member-desc">Combines global brand strategy and sustainability research. Her expertise directly shaped a client's circular economy vision assessment.</p>
+          <span class="member-outcome active">Currently active</span>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card-top">
+            <div class="member-name">Mayu Maezawa</div>
+            <div class="member-role">Associate</div>
+            <div class="member-path">Univ. of Tokyo (Law) → Goldman Sachs IBD → London Business School</div>
+          </div>
+          <p class="member-desc">Former investment banker who joined to gain hands-on startup support experience before transitioning to venture capital.</p>
+          <span class="member-outcome placed">→ GLOBIS Capital Partners</span>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card-top">
+            <div class="member-name">Hiroki Utsumi</div>
+            <div class="member-role">Associate</div>
+            <div class="member-path">Hitotsubashi → Toyota (China, Mexico) → Accenture (Mobility)</div>
+          </div>
+          <p class="member-desc">Combines firsthand manufacturing operations experience with strategic consulting methodology. Understands enterprise innovation from the inside out.</p>
+          <span class="member-outcome active">Alumni</span>
+        </article>
+
       </div>
-
-      <div class="cs-card">
-        <div class="cs-header">
-          <h3>Senior Associate</h3>
-          <div class="cs-role">Audit</div>
-        </div>
-        <div class="cs-body">
-          <p><strong>What he wanted:</strong> Hands-on experience managing a team of consultants &mdash; not just executing tasks, but leading project delivery end to end.</p>
-          <p><strong>What he got:</strong> Led a multi-person project team across enterprise engagements. Learned to pace a team without pressure, run hypothesis-driven sprints, and own client-facing deliverables from proposal to final presentation.</p>
-          <p>"I learned to lead teams at the right pace &mdash; building hypotheses and testing them with real clients, not just in case interviews."</p>
-          <span class="cs-outcome">&#10003; Offers from Strategy&amp;, McKinsey, Bain</span>
-          <div class="cs-tags">#manufacturing #pricingstrategy #marketlaunch #newproductdev #crossborder #venturesourcing #PMI</div>
-        </div>
-      </div>
-
-      <!-- Hidden: Associate / Global FMCG card -->
-
-      <div class="cs-card">
-        <div class="cs-header">
-          <h3>Associate</h3>
-          <div class="cs-role">Investment Banking</div>
-        </div>
-        <div class="cs-body">
-          <p><strong>What she wanted:</strong> Hands-on startup experience before transitioning from investment banking to venture capital.</p>
-          <p><strong>What she got:</strong> Scouted, evaluated, and built investment theses for startups through corporate venture sourcing projects. Bridged deal structuring skills with the startup ecosystem &mdash; the exact experience needed to launch a VC career.</p>
-          <span class="cs-outcome">&#10003; Joining GLOBIS Capital Partners</span>
-          <div class="cs-tags">#venturesourcing #PMI #crossborder #newproductdev</div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── Model Case ── -->
-<section class="model-case" id="model-case">
-  <div class="container">
-    <div class="section-tag">Typical Engagement</div>
-    <div class="section-title">What a year at Peetslist looks like</div>
-    <div class="section-sub">A model case for an MBA or Master's student joining during their first year. Hours flex around your academic calendar &mdash; lighter during term, intensive during breaks.</div>
+  <!-- Model Case -->
+  <section class="model-section" id="model-case">
+    <h2 class="section-heading">– What a year looks like –</h2>
+    <p style="text-align:center;font-size:16px;color:#555;max-width:640px;margin:0 auto;line-height:1.7;">Hours flex around your academic calendar — lighter during term, intensive during breaks.</p>
 
-    <div class="timeline">
+    <div class="model-timeline">
 
-      <div class="tl-row">
-        <div class="tl-period">
-          <div class="tl-label">Year 1 &middot; Term 1</div>
-          <div class="tl-months">Sep &ndash; Dec</div>
+      <div class="mt-row">
+        <div class="mt-period">
+          <div class="mt-period-label">Year 1 · Term 1</div>
+          <div class="mt-period-months">Sep – Dec</div>
         </div>
-        <div class="tl-dot active"></div>
-        <div class="tl-content">
-          <div class="tl-hours">10h <span>/week</span></div>
-          <div class="tl-badge junior">Junior Associate</div>
-          <div class="tl-project">Project A &mdash; Market Entry</div>
-          <p>Onboarding &amp; training (Weeks 1-4). Begin desk research, data collection, and hypothesis building under Senior Associate guidance. Weekly 1-on-1 feedback sessions.</p>
-          <div class="tl-skills">Skill focus: Research methodology, Issue Trees, slide basics</div>
+        <div class="mt-dot-col"><div class="mt-dot"></div></div>
+        <div class="mt-content">
+          <div class="mt-hours">10h <span>/week</span></div>
+          <div class="mt-badge junior">Junior Associate</div>
+          <div class="mt-project">Project A — Market Entry</div>
+          <p>Onboarding & training (Weeks 1-4). Begin desk research, data collection, and hypothesis building under Senior Associate guidance. Weekly 1-on-1 feedback.</p>
+          <div class="mt-skills">Skill focus: Research methodology, Issue Trees, slide basics</div>
         </div>
       </div>
 
-      <div class="tl-row">
-        <div class="tl-period">
-          <div class="tl-label">Winter Break</div>
-          <div class="tl-months">Dec &ndash; Jan</div>
+      <div class="mt-row">
+        <div class="mt-period">
+          <div class="mt-period-label">Winter Break</div>
+          <div class="mt-period-months">Dec – Jan</div>
         </div>
-        <div class="tl-dot active"></div>
-        <div class="tl-content">
-          <div class="tl-hours">20h <span>/week</span></div>
-          <div class="tl-badge junior">Junior Associate</div>
-          <div class="tl-project">Project A &mdash; Market Entry (continued)</div>
-          <p>Ramp up during break. Lead a workstream independently: client interview preparation, financial analysis, or competitive benchmarking. Deliver interim findings to the client.</p>
-          <div class="tl-skills">Skill focus: Client communication, deliverable crafting</div>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-period">
-          <div class="tl-label">Year 1 &middot; Term 2</div>
-          <div class="tl-months">Jan &ndash; May</div>
-        </div>
-        <div class="tl-dot active"></div>
-        <div class="tl-content">
-          <div class="tl-hours">10h <span>/week</span></div>
-          <div class="tl-badge junior">Junior Associate</div>
-          <div class="tl-project">Project B &mdash; Venture Sourcing</div>
-          <p>Rotate to a new client and service line. Apply research and analysis skills to startup scouting and technology assessment. Begin conducting interviews independently.</p>
-          <div class="tl-skills">Skill focus: Startup evaluation, scenario analysis, autonomy</div>
+        <div class="mt-dot-col"><div class="mt-dot"></div></div>
+        <div class="mt-content">
+          <div class="mt-hours">20h <span>/week</span></div>
+          <div class="mt-badge junior">Junior Associate</div>
+          <div class="mt-project">Project A — Market Entry (continued)</div>
+          <p>Ramp up during break. Lead a workstream independently: interview preparation, financial analysis, or competitive benchmarking. Deliver interim findings to the client.</p>
+          <div class="mt-skills">Skill focus: Client communication, deliverable crafting</div>
         </div>
       </div>
 
-      <div class="tl-row highlight">
-        <div class="tl-period">
-          <div class="tl-label">Summer</div>
-          <div class="tl-months">Jun &ndash; Aug</div>
+      <div class="mt-row">
+        <div class="mt-period">
+          <div class="mt-period-label">Year 1 · Term 2</div>
+          <div class="mt-period-months">Jan – May</div>
         </div>
-        <div class="tl-dot promoted"></div>
-        <div class="tl-content">
-          <div class="tl-hours">20h <span>/week</span></div>
-          <div class="tl-badge senior">&#9650; Senior Associate (PM)</div>
-          <div class="tl-project">Project C &mdash; New Product Launch</div>
-          <p>Promoted based on skill assessment. Lead a project team of 2-3 junior associates. Own the project plan, quality reviews, and client-facing deliverables. Manage sprint cycles and stakeholder reporting.</p>
-          <div class="tl-skills">Skill focus: Team management, project leadership, executive storytelling</div>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-period">
-          <div class="tl-label">Year 2 &middot; Term 1</div>
-          <div class="tl-months">Sep &ndash; Dec</div>
-        </div>
-        <div class="tl-dot active"></div>
-        <div class="tl-content">
-          <div class="tl-hours">10h <span>/week</span></div>
-          <div class="tl-badge senior">Senior Associate (PM)</div>
-          <div class="tl-project">Project D &mdash; Market Entry or Venture Sourcing</div>
-          <p>Continue leading as PM while mentoring new junior associates. Build your case study portfolio for MBB interviews. Mock case interviews with Peetslist advisors.</p>
-          <div class="tl-skills">Skill focus: Mentoring, case interview prep, career transition</div>
+        <div class="mt-dot-col"><div class="mt-dot"></div></div>
+        <div class="mt-content">
+          <div class="mt-hours">10h <span>/week</span></div>
+          <div class="mt-badge junior">Junior Associate</div>
+          <div class="mt-project">Project B — Venture Sourcing</div>
+          <p>Rotate to a new client and service line. Apply research and analysis skills to startup scouting and technology assessment. Conduct interviews independently.</p>
+          <div class="mt-skills">Skill focus: Startup evaluation, scenario analysis, autonomy</div>
         </div>
       </div>
 
-      <div class="tl-row graduation">
-        <div class="tl-period">
-          <div class="tl-label">Graduation</div>
-          <div class="tl-months">&nbsp;</div>
+      <div class="mt-row highlight">
+        <div class="mt-period">
+          <div class="mt-period-label">Summer</div>
+          <div class="mt-period-months">Jun – Aug</div>
         </div>
-        <div class="tl-dot grad"></div>
-        <div class="tl-content">
-          <div class="tl-grad-text">
+        <div class="mt-dot-col"><div class="mt-dot promoted"></div></div>
+        <div class="mt-content">
+          <div class="mt-hours">20h <span>/week</span></div>
+          <div class="mt-badge senior">▲ Senior Associate (PM)</div>
+          <div class="mt-project">Project C — New Product Launch</div>
+          <p>Promoted based on skill assessment. Lead a project team of 2-3 junior associates. Own the project plan, quality reviews, and client-facing deliverables.</p>
+          <div class="mt-skills">Skill focus: Team management, project leadership, executive storytelling</div>
+        </div>
+      </div>
+
+      <div class="mt-row">
+        <div class="mt-period">
+          <div class="mt-period-label">Year 2 · Term 1</div>
+          <div class="mt-period-months">Sep – Dec</div>
+        </div>
+        <div class="mt-dot-col"><div class="mt-dot"></div></div>
+        <div class="mt-content">
+          <div class="mt-hours">10h <span>/week</span></div>
+          <div class="mt-badge senior">Senior Associate (PM)</div>
+          <div class="mt-project">Project D — Market Entry or Venture Sourcing</div>
+          <p>Continue as PM while mentoring new juniors. Build your case study portfolio for MBB interviews. Mock case sessions with Peetslist advisors.</p>
+          <div class="mt-skills">Skill focus: Mentoring, case interview prep, career transition</div>
+        </div>
+      </div>
+
+      <div class="mt-row">
+        <div class="mt-period">
+          <div class="mt-period-label">Graduation</div>
+          <div class="mt-period-months"></div>
+        </div>
+        <div class="mt-dot-col"><div class="mt-dot grad"></div></div>
+        <div class="mt-content">
+          <div class="mt-grad-box">
             <strong>What you leave with:</strong> 3-4 completed client projects, a portfolio of real deliverables, LinkedIn recommendation from the team, Case Study published on our site, and a network of enterprise contacts across Japanese industry.
           </div>
         </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── How It Works ── -->
-<section class="how-it-works" id="how-it-works">
-  <div class="container">
-    <div class="section-tag">Process</div>
-    <div class="section-title">How to Join</div>
-    <div class="section-sub">A simple process that matches your skills and availability with live client projects.</div>
-    <div class="steps">
-      <div class="step">
-        <h3>Register</h3>
-        <p>Submit your profile to apply for the internship. We review your background, skills, and availability.</p>
-      </div>
-      <div class="step">
-        <h3>Interview</h3>
-        <p>A 30-minute conversation to understand your goals, strengths, and areas of interest.</p>
-      </div>
-      <div class="step">
-        <h3>Match</h3>
-        <p>When a project matches your profile, we propose the engagement. You choose whether to accept.</p>
-      </div>
-      <div class="step">
-        <h3>Deliver</h3>
-        <p>Join the project team, contribute to real deliverables, and grow with structured feedback from senior consultants and advisors.</p>
+  <!-- How It Works -->
+  <section class="process-section">
+    <div class="process-inner">
+      <h2 class="section-heading">– How the talent pool works –</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-step-num">1</div>
+          <h3>Register</h3>
+          <p>Submit your profile. We review backgrounds, skills, and availability.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">2</div>
+          <h3>Interview</h3>
+          <p>A 30-minute conversation about your goals, strengths, and interests.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">3</div>
+          <h3>Match</h3>
+          <p>When a project fits your profile, we propose it. You decide.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">4</div>
+          <h3>Deliver</h3>
+          <p>Join the team, contribute to real deliverables, grow with feedback.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── Registration Form ── -->
-<section class="register" id="register">
-  <div class="container">
-    <div class="form-container">
+  <!-- Registration Form -->
+  <section class="register-section" id="register">
+    <div class="register-inner">
 
-      <div id="formContent">
-        <h2>Apply for the Internship</h2>
-        <p class="form-sub">Submit your profile and we'll match you with a live client project. We'll reach out within 5 business days to schedule a conversation.</p>
-
-        <form id="registrationForm" onsubmit="handleSubmit(event)">
-
-          <div class="form-row half">
-            <div>
-              <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="first_name" required placeholder="Taro">
-            </div>
-            <div>
-              <label for="lastName">Last Name *</label>
-              <input type="text" id="lastName" name="last_name" required placeholder="Yamada">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required placeholder="taro@university.edu">
-          </div>
-
-          <div class="form-row">
-            <label for="phone">Phone (with country code)</label>
-            <input type="tel" id="phone" name="phone" placeholder="+81 90-1234-5678">
-          </div>
-
-          <div class="form-row half">
-            <div>
-              <label for="school">School / Program *</label>
-              <input type="text" id="school" name="school" required placeholder="e.g. London Business School">
-            </div>
-            <div>
-              <label for="graduation">Expected Graduation *</label>
-              <input type="month" id="graduation" name="graduation" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <label for="status">Current Status *</label>
-            <select id="status" name="status" required>
-              <option value="" disabled selected>Select your status</option>
-              <option value="mba_enrolled">MBA &mdash; Currently enrolled</option>
-              <option value="mba_graduated">MBA &mdash; Recently graduated</option>
-              <option value="masters_enrolled">Master's &mdash; Currently enrolled</option>
-              <option value="masters_graduated">Master's &mdash; Recently graduated</option>
-              <option value="working_professional">Working professional (part-time interest)</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <label for="linkedin">LinkedIn Profile URL *</label>
-            <input type="url" id="linkedin" name="linkedin" required placeholder="https://linkedin.com/in/yourname">
-          </div>
-
-          <div class="form-row">
-            <label for="background">Professional Background *</label>
-            <textarea id="background" name="background" required placeholder="Briefly describe your work experience and key skills (e.g. 3 years at BCG in Tokyo, focused on manufacturing sector strategy)"></textarea>
-            <div class="hint">Include previous employers, roles, and areas of expertise.</div>
-          </div>
-
-          <div class="form-row">
-            <label for="availability">Earliest Availability *</label>
-            <input type="month" id="availability" name="availability" required>
-            <div class="hint">When could you start a project? Approximate is fine.</div>
-          </div>
-
-          <div class="form-row">
-            <label for="languages">Languages</label>
-            <input type="text" id="languages" name="languages" placeholder="e.g. Japanese (native), English (fluent), Mandarin (conversational)">
-          </div>
-
-          <div class="form-row">
-            <label for="referral">How did you hear about us?</label>
-            <select id="referral" name="referral">
-              <option value="" disabled selected>Select one</option>
-              <option value="linkedin">LinkedIn</option>
-              <option value="referral">Referral from a friend/colleague</option>
-              <option value="school">MBA school network</option>
-              <option value="event">Event / conference</option>
-              <option value="search">Web search</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="checkbox-row">
-            <input type="checkbox" id="consent" required>
-            <label for="consent">I agree to Peetslist storing my information for internship placement purposes. My data will only be used for project matching and will not be shared with third parties without my consent.</label>
-          </div>
-
-          <button type="submit" class="submit-btn">Submit Application</button>
-          <p class="form-note">We typically respond within 5 business days.<br>Questions? Contact <a href="mailto:yukako@peetslist.me" style="color:var(--navy);">yukako@peetslist.me</a></p>
-        </form>
+      <div class="register-intro">
+        <h2>Join the<br>Talent Pool</h2>
+        <div class="divider"></div>
+        <p>Register your interest and we'll reach out when a project matches your profile. No commitment required.</p>
+        <p class="contact-line">Questions? <a href="mailto:ippei.yamada@peetslist.me">ippei.yamada@peetslist.me</a></p>
       </div>
 
-      <div class="form-success" id="formSuccess">
-        <div class="check">&#10003;</div>
-        <h3>Application Received</h3>
-        <p>Thank you for your interest in Peetslist. We've received your application and will review your profile shortly. You'll hear from us within 5 business days.</p>
-        <p style="margin-top:16px;font-size:13px;">A confirmation has been sent to your email.</p>
+      <div class="reg-form">
+        <div id="regFormContent">
+          <form id="registrationForm" onsubmit="handleSubmit(event)">
+
+            <div class="reg-row half">
+              <div>
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="first_name" required placeholder="Taro">
+              </div>
+              <div>
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="last_name" required placeholder="Yamada">
+              </div>
+            </div>
+
+            <div class="reg-row">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="taro@university.edu">
+            </div>
+
+            <div class="reg-row">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+81 90-1234-5678">
+            </div>
+
+            <div class="reg-row half">
+              <div>
+                <label for="school">MBA School *</label>
+                <input type="text" id="school" name="school" required placeholder="e.g. London Business School">
+              </div>
+              <div>
+                <label for="graduation">Expected Graduation *</label>
+                <input type="month" id="graduation" name="graduation" required>
+              </div>
+            </div>
+
+            <div class="reg-row">
+              <label for="status">Current Status *</label>
+              <select id="status" name="status" required>
+                <option value="" disabled selected>Select your status</option>
+                <option value="mba_enrolled">MBA — Currently enrolled</option>
+                <option value="mba_graduated">MBA — Recently graduated</option>
+                <option value="working_professional">Working professional (part-time interest)</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="reg-row">
+              <label for="linkedin">LinkedIn Profile URL *</label>
+              <input type="url" id="linkedin" name="linkedin" required placeholder="https://linkedin.com/in/yourname">
+            </div>
+
+            <div class="reg-row">
+              <label for="background">Professional Background *</label>
+              <textarea id="background" name="background" required placeholder="Briefly describe your work experience and key skills"></textarea>
+              <div class="hint">Include previous employers, roles, and areas of expertise.</div>
+            </div>
+
+            <div class="reg-row">
+              <label>Areas of Interest</label>
+              <div class="interests-row">
+                <label><input type="checkbox" name="interest" value="market_entry"> Market Entry</label>
+                <label><input type="checkbox" name="interest" value="new_product"> New Product Launch</label>
+                <label><input type="checkbox" name="interest" value="venture_sourcing"> Venture Sourcing</label>
+                <label><input type="checkbox" name="interest" value="financial_analysis"> Financial Analysis</label>
+              </div>
+            </div>
+
+            <div class="reg-row">
+              <label for="availability">Earliest Availability *</label>
+              <input type="month" id="availability" name="availability" required>
+            </div>
+
+            <div class="reg-row">
+              <label for="languages">Languages</label>
+              <input type="text" id="languages" name="languages" placeholder="e.g. Japanese (native), English (fluent)">
+            </div>
+
+            <div class="reg-row">
+              <label for="referral">How did you hear about us?</label>
+              <select id="referral" name="referral">
+                <option value="" disabled selected>Select one</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="referral">Referral</option>
+                <option value="school">MBA school network</option>
+                <option value="event">Event / conference</option>
+                <option value="search">Web search</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="checkbox-row">
+              <input type="checkbox" id="consent" required>
+              <label for="consent">I agree to Peetslist storing my information for talent pool purposes. My data will not be shared with third parties without my consent.</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Application</button>
+            <p class="form-note">We typically respond within 5 business days.</p>
+          </form>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <h3>Application Received</h3>
+          <p>Thank you for your interest. We'll review your profile and reach out within 5 business days.</p>
+        </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── Footer ── -->
-<footer>
-  <div class="footer-logo">Peetslist</div>
-  <p style="margin-top:8px;">
-    <a href="mailto:hello@peetslist.me">hello@peetslist.me</a>
-  </p>
-</footer>
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>Peetslist</h3>
+        <p>Strategy & Prototyping studio</p>
+      </div>
+      <div class="footer-col">
+        <h4>Location</h4>
+        <ul>
+          <li>London</li>
+          <li>Tokyo</li>
+          <li>Nairobi</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <ul>
+          <li><a href="https://peetslist.me/about">About us</a></li>
+          <li><a href="https://peetslist.me/service">What we do</a></li>
+          <li><a href="https://peetslist.me/casestudy">Case study</a></li>
+          <li><a href="https://peetslist.me/bigquestions">White paper</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <ul>
+          <li><a href="#">Career</a></li>
+          <li><a href="https://peetslist.me/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 
-<script>
-function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('.submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-
-  fetch('https://formspree.io/f/mojnvjpy', {
-    method: 'POST',
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
-  })
-  .then(function(response) {
-    if (response.ok) {
-      document.getElementById('formContent').querySelector('form').style.display = 'none';
-      document.getElementById('formContent').querySelector('h2').style.display = 'none';
-      document.getElementById('formContent').querySelector('.form-sub').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    } else {
-      return response.json().then(function(data) {
-        throw new Error(data.errors ? data.errors.map(function(err) { return err.message; }).join(', ') : 'Submission failed');
-      });
-    }
-  })
-  .catch(function(error) {
-    btn.disabled = false;
-    btn.textContent = 'Submit Application';
-    alert('Something went wrong. Please try again or email us directly at yukako@peetslist.me');
-  });
-}
-</script>
+  <script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = form.querySelector('.submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+    fetch('https://formspree.io/f/mojnvjpy', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        document.getElementById('regFormContent').querySelector('form').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        return response.json().then(function(data) {
+          throw new Error(data.errors ? data.errors.map(function(err) { return err.message; }).join(', ') : 'Submission failed');
+        });
+      }
+    })
+    .catch(function(error) {
+      btn.disabled = false;
+      btn.textContent = 'Submit Application';
+      alert('Something went wrong. Please try again or email us directly at ippei.yamada@peetslist.me');
+    });
+  }
+  </script>
 
 </body>
 </html>
