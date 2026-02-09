@@ -715,105 +715,36 @@
 </footer>
 
 <script>
-// ── Form Handling ──
-// This form collects data and sends via email (mailto).
-// To connect to a backend system:
-//   Option A: Replace action with Google Forms URL
-//   Option B: Use Formspree (formspree.io) - free up to 50 submissions/month
-//   Option C: Connect to Google Sheets via Apps Script (see instructions below)
-
 function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const data = new FormData(form);
+  const btn = form.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
 
-  // Collect interests
-  const interests = [];
-  document.querySelectorAll('input[name="interest"]:checked').forEach(cb => {
-    interests.push(cb.value);
+  fetch('https://formspree.io/f/mojnvjpy', {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(function(response) {
+    if (response.ok) {
+      document.getElementById('formContent').querySelector('form').style.display = 'none';
+      document.getElementById('formContent').querySelector('h2').style.display = 'none';
+      document.getElementById('formContent').querySelector('.form-sub').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      return response.json().then(function(data) {
+        throw new Error(data.errors ? data.errors.map(function(err) { return err.message; }).join(', ') : 'Submission failed');
+      });
+    }
+  })
+  .catch(function(error) {
+    btn.disabled = false;
+    btn.textContent = 'Submit Application';
+    alert('Something went wrong. Please try again or email us directly at yukako@peetslist.me');
   });
-
-  // Build submission object
-  const submission = {
-    timestamp: new Date().toISOString(),
-    first_name: data.get('first_name'),
-    last_name: data.get('last_name'),
-    email: data.get('email'),
-    phone: data.get('phone') || '',
-    school: data.get('school'),
-    graduation: data.get('graduation'),
-    status: data.get('status'),
-    linkedin: data.get('linkedin'),
-    background: data.get('background'),
-    interests: interests.join(', '),
-    availability: data.get('availability'),
-    languages: data.get('languages') || '',
-    referral: data.get('referral') || ''
-  };
-
-  // ── OPTION 1: mailto (works immediately, no backend needed) ──
-  const subject = encodeURIComponent('Talent Pool Application: ' + submission.first_name + ' ' + submission.last_name);
-  const body = encodeURIComponent(
-    'NEW TALENT POOL APPLICATION\n' +
-    '================================\n\n' +
-    'Name: ' + submission.first_name + ' ' + submission.last_name + '\n' +
-    'Email: ' + submission.email + '\n' +
-    'Phone: ' + submission.phone + '\n' +
-    'MBA School: ' + submission.school + '\n' +
-    'Graduation: ' + submission.graduation + '\n' +
-    'Status: ' + submission.status + '\n' +
-    'LinkedIn: ' + submission.linkedin + '\n' +
-    'Background: ' + submission.background + '\n' +
-    'Interests: ' + submission.interests + '\n' +
-    'Availability: ' + submission.availability + '\n' +
-    'Languages: ' + submission.languages + '\n' +
-    'Referral: ' + submission.referral + '\n' +
-    'Submitted: ' + submission.timestamp + '\n'
-  );
-
-  // Send via mailto
-  window.location.href = 'mailto:ippei.yamada@peetslist.me?subject=' + subject + '&body=' + body;
-
-  // Show success message
-  document.getElementById('formContent').querySelector('form').style.display = 'none';
-  document.getElementById('formContent').querySelector('h2').style.display = 'none';
-  document.getElementById('formContent').querySelector('.form-sub').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
-
-  // ── OPTION 2: Google Sheets via Apps Script ──
-  // Uncomment below and replace SCRIPT_URL with your deployed Apps Script URL:
-  //
-  // fetch('YOUR_APPS_SCRIPT_URL', {
-  //   method: 'POST',
-  //   mode: 'no-cors',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(submission)
-  // });
-
-  // ── OPTION 3: Formspree ──
-  // Replace form action with: https://formspree.io/f/YOUR_FORM_ID
-  // and change to standard form submission
 }
-
-// ── Google Sheets Integration Instructions ──
-// 1. Create a Google Sheet with columns matching the form fields
-// 2. Go to Extensions > Apps Script
-// 3. Paste this code:
-//
-// function doPost(e) {
-//   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-//   var data = JSON.parse(e.postData.contents);
-//   sheet.appendRow([
-//     data.timestamp, data.first_name, data.last_name,
-//     data.email, data.phone, data.school, data.graduation,
-//     data.status, data.linkedin, data.background,
-//     data.interests, data.availability, data.languages, data.referral
-//   ]);
-//   return ContentService.createTextOutput('OK');
-// }
-//
-// 4. Deploy > New deployment > Web app > Anyone can access
-// 5. Copy the URL and replace YOUR_APPS_SCRIPT_URL above
 </script>
 
 </body>
